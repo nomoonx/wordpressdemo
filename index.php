@@ -4,6 +4,6 @@
 	<title></title>
 </head>
 <body>
-<?php bloginfo(’stylesheet_url’); ?>
+<?php bloginfo(’name’); ?>
 </body>
 </html>
