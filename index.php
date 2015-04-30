@@ -7,6 +7,8 @@
 </head>
 <body>
 	<?php echo bloginfo('url'); ?>
-	<a href=<?php bloginfo('url'); ?>><?php bloginfo('name'); ?></a>
+	<a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
+	 <?php
+    bloginfo(’description’); ?>
 </body>
 </html>
