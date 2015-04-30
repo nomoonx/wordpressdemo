@@ -4,6 +4,6 @@
 	<title></title>
 </head>
 <body>
-<?php bloginfo(’name’); ?>
+	<a href=”<?php bloginfo('url'); ?>”><?php bloginfo(’name’); ?></a>
 </body>
 </html>
