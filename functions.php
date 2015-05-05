@@ -26,7 +26,7 @@ function vision_scripts_styles() {
     #wp_enqueue_style( 'vision-fonts', vision_fonts_url(), array(), null );
 
     /* Main Stylesheet */
-    #wp_enqueue_style( 'vision-style', get_stylesheet_uri(), array(), '' );
+    wp_enqueue_style( 'vision-style', get_stylesheet_uri(), array(), '' );
 
 
 }
