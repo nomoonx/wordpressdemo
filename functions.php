@@ -6,8 +6,31 @@ require_once get_template_directory() . '/inc/options-framework.php';
 $optionsfile = locate_template( 'options.php' );
 load_template( $optionsfile );
 
-wp_enqueue_script('vision-slider',get_template_directory_uri().'/js/jquery.flexslider.js',array('jquery'),'',true);
+function vision_scripts_styles() {
+/*
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+        wp_enqueue_script( 'comment-reply' );
+*/
 
+    /* Jquery Files */
+
+    wp_enqueue_script('vision-modernizr',get_template_directory_uri().'/js/modernizr.js',array(),'',true);
+
+    wp_enqueue_script('vision-smoothscroll',get_template_directory_uri().'/js/SmoothScroll.js',array(),'',true);
+
+    wp_enqueue_script('vision-slider',get_template_directory_uri().'/js/jquery.flexslider.js',array('jquery'),'',true);
+
+    wp_enqueue_script('vision-custom',get_template_directory_uri().'/js/vision-custom.js',array('jquery'),'',true);
+
+    /* Custom Font */
+    #wp_enqueue_style( 'vision-fonts', vision_fonts_url(), array(), null );
+
+    /* Main Stylesheet */
+    #wp_enqueue_style( 'vision-style', get_stylesheet_uri(), array(), '' );
+
+
+}
+add_action( 'wp_enqueue_scripts', 'vision_scripts_styles' );
 
 /**********************************************************************************
 /* Paging *
