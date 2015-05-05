@@ -1,4 +1,40 @@
 <?php
+
+function vision_setup() {
+
+    /* Content Width */
+    if ( ! isset( $content_width ) )
+        $content_width = 745;
+
+
+    add_theme_support( 'automatic-feed-links' );
+
+
+    add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
+
+
+    add_theme_support( 'post-formats', array(
+        'aside', 'audio', 'image', 'quote', 'video', 'link', 'status', 'chat'
+    ) );
+
+    add_theme_support('custom-background');
+
+    /* Menu */
+    register_nav_menus(array(
+        'top-menu' => __( 'Top Menu', 'vision' ),
+        'mobile-menu' => __('Mobile Top Menu', 'vision')
+    ));
+
+
+    /* Thumbnail Size */
+    add_theme_support( 'post-thumbnails' );
+    add_image_size( 'image',745, 290, true );
+
+
+
+}
+add_action( 'after_setup_theme', 'vision_setup' );
+
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/' );
 require_once get_template_directory() . '/inc/options-framework.php';
 
