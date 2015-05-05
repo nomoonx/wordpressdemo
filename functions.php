@@ -6,6 +6,9 @@ require_once get_template_directory() . '/inc/options-framework.php';
 $optionsfile = locate_template( 'options.php' );
 load_template( $optionsfile );
 
+wp_enqueue_script('vision-slider',get_template_directory_uri().'/js/jquery.flexslider.js',array('jquery'),'',true);
+
+
 /**********************************************************************************
 /* Paging *
  **********************************************************************************/
