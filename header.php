@@ -36,6 +36,7 @@
             <!-- end col-sm-3 -->
 
             <div class="logo">
+                <?php echo of_get_option( 'logo', true );?>
                 <a href="<?php echo esc_url( home_url('/')); ?>">
                     <?php if( of_get_option( 'logo', true ) != '' ) { ; ?>
                         <?php if( of_get_option('logo',true) == 1 ) { ?>
