@@ -5,4 +5,9 @@ require_once get_template_directory() . '/inc/options-framework.php';
 // Loads options.php from child or parent theme
 $optionsfile = locate_template( 'options.php' );
 load_template( $optionsfile );
-?>
+
+/**********************************************************************************
+/* Paging *
+ **********************************************************************************/
+require_once(get_template_directory().'/functions/pagination.php');
+
