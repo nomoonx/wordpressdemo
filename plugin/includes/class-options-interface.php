@@ -1,7 +1,10 @@
 <?php
-
 /**
- * Generates the tabs that are used in the options menu
+ * @package   Options_Framework
+ * @author    Devin Price <devin@wptheming.com>
+ * @license   GPL-2.0+
+ * @link      http://wptheming.com
+ * @copyright 2010-2014 WP Theming
  */
 
 class Options_Framework_Interface {
@@ -23,22 +26,28 @@ class Options_Framework_Interface {
 				$class = preg_replace( '/[^a-zA-Z0-9._\-]/', '', strtolower($class) ) . '-tab';
 				$menu .= '<a id="options-group-'.  $counter . '-tab" class="nav-tab ' . $class .'" title="' . esc_attr( $value['name'] ) . '" href="' . esc_attr( '#options-group-'.  $counter ) . '">' . esc_html( $value['name'] ) . '</a>';
 			}
-			
 		}
 
 		return $menu;
-	} 
- 
+	}
+
 	/**
 	 * Generates the options fields that are used in the form.
 	 */
 	static function optionsframework_fields() {
 
 		global $allowedtags;
+		$optionsframework_settings = get_option( 'optionsframework' );
 
-		$options_framework = new Options_Framework;
-		$option_name = $options_framework->get_option_name();
-		$settings = get_option( $option_name );
+		// Gets the unique option id
+		if ( isset( $optionsframework_settings['id'] ) ) {
+			$option_name = $optionsframework_settings['id'];
+		}
+		else {
+			$option_name = 'optionsframework';
+		};
+
+		$settings = get_option($option_name);
 		$options = & Options_Framework::_optionsframework_options();
 
 		$counter = 0;
@@ -100,12 +109,6 @@ class Options_Framework_Interface {
 				$explain_value = $value['desc'];
 			}
 
-			// Set the placeholder if one exists
-			$placeholder = '';
-			if ( isset( $value['placeholder'] ) ) {
-				$placeholder = ' placeholder="' . esc_attr( $value['placeholder'] ) . '"';
-			}
-
 			if ( has_filter( 'optionsframework_' . $value['type'] ) ) {
 				$output .= apply_filters( 'optionsframework_' . $value['type'], $option_name, $value, $val );
 			}
@@ -115,7 +118,7 @@ class Options_Framework_Interface {
 
 			// Basic text input
 			case 'text':
-				$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" type="text" value="' . esc_attr( $val ) . '"' . $placeholder . ' />';
+				$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" type="text" value="' . esc_attr( $val ) . '" />';
 				break;
 
 			// Password input
@@ -135,7 +138,7 @@ class Options_Framework_Interface {
 				}
 
 				$val = stripslashes( $val );
-				$output .= '<textarea id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" rows="' . $rows . '"' . $placeholder . '>' . esc_textarea( $val ) . '</textarea>';
+				$output .= '<textarea id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" rows="' . $rows . '">' . esc_textarea( $val ) . '</textarea>';
 				break;
 
 			// Select Box
@@ -210,6 +213,7 @@ class Options_Framework_Interface {
 			// Uploader
 			case "upload":
 				$output .= Options_Framework_Media_Uploader::optionsframework_uploader( $value['id'], $val, null );
+
 				break;
 
 			// Typography
@@ -349,7 +353,7 @@ class Options_Framework_Interface {
 				$default_editor_settings = array(
 					'textarea_name' => $textarea_name,
 					'media_buttons' => false,
-					'tinymce' => array( 'plugins' => 'wordpress' )
+					'tinymce' => array( 'plugins' => 'wordpress,wplink' )
 				);
 				$editor_settings = array();
 				if ( isset( $value['settings'] ) ) {

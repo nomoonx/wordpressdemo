@@ -1,4 +1,11 @@
 <?php
+/**
+ * @package   Options_Framework
+ * @author    Devin Price <devin@wptheming.com>
+ * @license   GPL-2.0+
+ * @link      http://wptheming.com
+ * @copyright 2010-2014 WP Theming
+ */
 
 class Options_Framework {
 
@@ -8,29 +15,55 @@ class Options_Framework {
 	 * @since 1.7.0
 	 * @type string
 	 */
-	const VERSION = '1.9.1';
+	const VERSION = '1.8.4';
 
 	/**
-	 * Gets option name
+	 * Initialize the plugin.
 	 *
-	 * @since 1.9.0
+	 * @since 1.7.0
 	 */
-	function get_option_name() {
+	public function init() {
 
-		$name = '';
+		// Needs to run every time in case theme has been changed
+		add_action( 'admin_init', array( $this, 'set_theme_option' ) );
 
-		// Gets option name as defined in the theme
-		if ( function_exists( 'optionsframework_option_name' ) ) {
-			$name = optionsframework_option_name();
-		}
+	}
 
-		// Fallback
-		if ( '' == $name ) {
-			$name = get_option( 'stylesheet' );
-			$name = preg_replace( "/\W/", "_", strtolower( $name ) );
-		}
+	/**
+	 * Sets option defaults
+	 *
+	 * @since 1.7.0
+	 */
+	function set_theme_option() {
 
-		return apply_filters( 'options_framework_option_name', $name );
+		// Load settings
+        $optionsframework_settings = get_option( 'optionsframework' );
+
+        // Updates the unique option id in the database if it has changed
+        if ( function_exists( 'optionsframework_option_name' ) ) {
+			optionsframework_option_name();
+        }
+        elseif ( has_action( 'optionsframework_option_name' ) ) {
+			do_action( 'optionsframework_option_name' );
+        }
+        // If the developer hasn't explicitly set an option id, we'll use a default
+        else {
+            $default_themename = get_option( 'stylesheet' );
+            $default_themename = preg_replace( "/\W/", "_", strtolower($default_themename ) );
+            $default_themename = 'optionsframework_' . $default_themename;
+            if ( isset( $optionsframework_settings['id'] ) ) {
+				if ( $optionsframework_settings['id'] == $default_themename ) {
+					// All good, using default theme id
+				} else {
+					$optionsframework_settings['id'] = $default_themename;
+					update_option( 'optionsframework', $optionsframework_settings );
+				}
+            }
+            else {
+				$optionsframework_settings['id'] = $default_themename;
+				update_option( 'optionsframework', $optionsframework_settings );
+            }
+        }
 
 	}
 
@@ -69,9 +102,9 @@ class Options_Framework {
 
 		if ( !$options ) {
 	        // Load options from options.php file (if it exists)
-	        $location = apply_filters( 'options_framework_location', array( 'options.php' ) );
+	        $location = apply_filters( 'options_framework_location', array('options.php') );
 	        if ( $optionsfile = locate_template( $location ) ) {
-	            $maybe_options = load_template( $optionsfile );
+	            $maybe_options = require_once $optionsfile;
 	            if ( is_array( $maybe_options ) ) {
 					$options = $maybe_options;
 	            } else if ( function_exists( 'optionsframework_options' ) ) {

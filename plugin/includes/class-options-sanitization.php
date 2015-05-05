@@ -1,4 +1,11 @@
 <?php
+/**
+ * @package   Options_Framework
+ * @author    Devin Price <devin@wptheming.com>
+ * @license   GPL-2.0+
+ * @link      http://wptheming.com
+ * @copyright 2010-2014 WP Theming
+ */
 
 /**
  * Sanitization for text input
@@ -118,7 +125,7 @@ function of_sanitize_editor( $input ) {
 	}
 	else {
 		global $allowedposttags;
-		$output = wpautop( wp_kses( $input, $allowedposttags ) );
+		$output = wp_kses( $input, $allowedposttags );
 	}
 	return $output;
 }
@@ -169,7 +176,6 @@ function of_sanitize_enum( $input, $option ) {
 
 /**
  * Sanitization for background option.
-
  *
  * @returns array $output
  */
@@ -306,12 +312,11 @@ add_filter( 'of_font_face', 'of_sanitize_font_face' );
  * @return   array
  */
 function of_recognized_background_repeat() {
-
 	$default = array(
-		'no-repeat' => __( 'No Repeat', 'skt-white' ),
-		'repeat-x'  => __( 'Repeat Horizontally', 'skt-white' ),
-		'repeat-y'  => __( 'Repeat Vertically', 'skt-white' ),
-		'repeat'    => __( 'Repeat All', 'skt-white' ),
+		'no-repeat' => __( 'No Repeat', 'options-framework' ),
+		'repeat-x'  => __( 'Repeat Horizontally', 'options-framework' ),
+		'repeat-y'  => __( 'Repeat Vertically', 'options-framework' ),
+		'repeat'    => __( 'Repeat All', 'options-framework' ),
 		);
 	return apply_filters( 'of_recognized_background_repeat', $default );
 }
@@ -323,15 +328,15 @@ function of_recognized_background_repeat() {
  */
 function of_recognized_background_position() {
 	$default = array(
-		'top left'      => __( 'Top Left', 'skt-white' ),
-		'top center'    => __( 'Top Center', 'skt-white' ),
-		'top right'     => __( 'Top Right', 'skt-white' ),
-		'center left'   => __( 'Middle Left', 'skt-white' ),
-		'center center' => __( 'Middle Center', 'skt-white' ),
-		'center right'  => __( 'Middle Right', 'skt-white' ),
-		'bottom left'   => __( 'Bottom Left', 'skt-white' ),
-		'bottom center' => __( 'Bottom Center', 'skt-white' ),
-		'bottom right'  => __( 'Bottom Right', 'skt-white')
+		'top left'      => __( 'Top Left', 'options-framework' ),
+		'top center'    => __( 'Top Center', 'options-framework' ),
+		'top right'     => __( 'Top Right', 'options-framework' ),
+		'center left'   => __( 'Middle Left', 'options-framework' ),
+		'center center' => __( 'Middle Center', 'options-framework' ),
+		'center right'  => __( 'Middle Right', 'options-framework' ),
+		'bottom left'   => __( 'Bottom Left', 'options-framework' ),
+		'bottom center' => __( 'Bottom Center', 'options-framework' ),
+		'bottom right'  => __( 'Bottom Right', 'options-framework')
 		);
 	return apply_filters( 'of_recognized_background_position', $default );
 }
@@ -343,8 +348,8 @@ function of_recognized_background_position() {
  */
 function of_recognized_background_attachment() {
 	$default = array(
-		'scroll' => __( 'Scroll Normally', 'skt-white' ),
-		'fixed'  => __( 'Fixed in Place', 'skt-white')
+		'scroll' => __( 'Scroll Normally', 'options-framework' ),
+		'fixed'  => __( 'Fixed in Place', 'options-framework')
 		);
 	return apply_filters( 'of_recognized_background_attachment', $default );
 }
@@ -416,10 +421,10 @@ function of_recognized_font_faces() {
  */
 function of_recognized_font_styles() {
 	$default = array(
-		'normal'      => __( 'Normal', 'skt-white' ),
-		'italic'      => __( 'Italic', 'skt-white' ),
-		'bold'        => __( 'Bold', 'skt-white' ),
-		'bold italic' => __( 'Bold Italic', 'skt-white' )
+		'normal'      => __( 'Normal', 'options-framework' ),
+		'italic'      => __( 'Italic', 'options-framework' ),
+		'bold'        => __( 'Bold', 'options-framework' ),
+		'bold italic' => __( 'Bold Italic', 'options-framework' )
 		);
 	return apply_filters( 'of_recognized_font_styles', $default );
 }

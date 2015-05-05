@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * @package   Options_Framework
+ * @author    Devin Price <devin@wptheming.com>
+ * @license   GPL-2.0+
+ * @link      http://wptheming.com
+ * @copyright 2010-2014 WP Theming
+ */
 
 class Options_Framework_Admin {
 
@@ -37,9 +43,40 @@ class Options_Framework_Admin {
 			// Adds options menu to the admin bar
 			add_action( 'wp_before_admin_bar_render', array( $this, 'optionsframework_admin_bar' ) );
 
+		} else {
+			// Display a notice if options aren't present in the theme
+			add_action( 'admin_notices', array( $this, 'options_notice' ) );
+			add_action( 'admin_init', array( $this, 'options_notice_ignore' ) );
 		}
 
     }
+
+	/**
+     * Let's the user know that options aren't available for their theme
+     */
+    function options_notice() {
+		global $pagenow;
+        if ( !is_multisite() && ( $pagenow == 'plugins.php' || $pagenow == 'themes.php' ) ) {
+			global $current_user ;
+			$user_id = $current_user->ID;
+			if ( ! get_user_meta($user_id, 'optionsframework_ignore_notice') ) {
+				echo '<div class="updated optionsframework_setup_nag"><p>';
+				printf( __('Your current theme does not have support for the Options Framework plugin.  <a href="%1$s" target="_blank">Learn More</a> | <a href="%2$s">Hide Notice</a>', 'options-framework' ), 'http://wptheming.com/options-framework-plugin', '?optionsframework_nag_ignore=0');
+				echo "</p></div>";
+			}
+        }
+	}
+
+	/**
+     * Allows the user to hide the options notice
+     */
+	function options_notice_ignore() {
+		global $current_user;
+		$user_id = $current_user->ID;
+		if ( isset( $_GET['optionsframework_nag_ignore'] ) && '0' == $_GET['optionsframework_nag_ignore'] ) {
+			add_user_meta( $user_id, 'optionsframework_ignore_notice', 'true', true );
+		}
+	}
 
 	/**
      * Registers the settings
@@ -48,12 +85,11 @@ class Options_Framework_Admin {
      */
     function settings_init() {
 
-		// Get the option name
-		$options_framework = new Options_Framework;
-	    $name = $options_framework->get_option_name();
+    	// Load Options Framework Settings
+        $optionsframework_settings = get_option( 'optionsframework' );
 
 		// Registers the settings fields and callback
-		register_setting( 'optionsframework', $name, array ( $this, 'validate_options' ) );
+		register_setting( 'optionsframework', $optionsframework_settings['id'],  array ( $this, 'validate_options' ) );
 
 		// Displays notice after options save
 		add_action( 'optionsframework_after_validate', array( $this, 'save_options_notice' ) );
@@ -61,7 +97,7 @@ class Options_Framework_Admin {
     }
 
 	/*
-	 * Define menu options
+	 * Define menu options (still limited to appearance section)
 	 *
 	 * Examples usage:
 	 *
@@ -82,10 +118,10 @@ class Options_Framework_Admin {
             'mode' => 'submenu',
 
             // Submenu default settings
-            'page_title' => __( 'Theme Options', 'skt-white' ),
-			'menu_title' => __( 'Theme Options', 'skt-white' ),
+            'page_title' => __( 'Theme Options', 'options-framework'),
+			'menu_title' => __('Theme Options', 'options-framework'),
 			'capability' => 'edit_theme_options',
-			'menu_slug' => 'sktwhite-options',
+			'menu_slug' => 'options-framework',
             'parent_slug' => 'themes.php',
 
             // Menu default settings
@@ -106,19 +142,32 @@ class Options_Framework_Admin {
 
 		$menu = $this->menu_settings();
 
-		// If you want a top level menu, see this Gist:
-		// https://gist.github.com/devinsays/884d6abe92857a329d99
+        switch( $menu['mode'] ) {
 
-		// Code removed because it conflicts with .org theme check.
+            case 'menu':
+            	// http://codex.wordpress.org/Function_Reference/add_menu_page
+                $this->options_screen = add_menu_page(
+                	$menu['page_title'],
+                	$menu['menu_title'],
+                	$menu['capability'],
+                	$menu['menu_slug'],
+                	array( $this, 'options_page' ),
+                	$menu['icon_url'],
+                	$menu['position']
+                );
+                break;
 
-		$this->options_screen = add_theme_page(
-            $menu['page_title'],
-            $menu['menu_title'],
-            $menu['capability'],
-            $menu['menu_slug'],
-            array( $this, 'options_page' )
-        );
-
+            default:
+            	// http://codex.wordpress.org/Function_Reference/add_submenu_page
+                $this->options_screen = add_submenu_page(
+                	$menu['parent_slug'],
+                	$menu['page_title'],
+                	$menu['menu_title'],
+                	$menu['capability'],
+                	$menu['menu_slug'],
+                	array( $this, 'options_page' ) );
+                break;
+        }
 	}
 
 	/**
@@ -126,13 +175,12 @@ class Options_Framework_Admin {
      *
      * @since 1.7.0
      */
-
 	function enqueue_admin_styles( $hook ) {
 
 		if ( $this->options_screen != $hook )
 	        return;
 
-		wp_enqueue_style( 'optionsframework', OPTIONS_FRAMEWORK_DIRECTORY . 'css/optionsframework.css', array(),  Options_Framework::VERSION );
+		wp_enqueue_style( 'optionsframework', plugin_dir_url( dirname(__FILE__) ) . 'css/optionsframework.css', array(),  Options_Framework::VERSION );
 		wp_enqueue_style( 'wp-color-picker' );
 	}
 
@@ -147,12 +195,7 @@ class Options_Framework_Admin {
 	        return;
 
 		// Enqueue custom option panel JS
-		wp_enqueue_script(
-			'options-custom',
-			OPTIONS_FRAMEWORK_DIRECTORY . 'js/options-custom.js',
-			array( 'jquery','wp-color-picker' ),
-			Options_Framework::VERSION
-		);
+		wp_enqueue_script( 'options-custom', plugin_dir_url( dirname(__FILE__) ) . 'js/options-custom.js', array( 'jquery','wp-color-picker' ), Options_Framework::VERSION );
 
 		// Inline scripts from options-interface.php
 		add_action( 'admin_head', array( $this, 'of_admin_head' ) );
@@ -185,57 +228,21 @@ class Options_Framework_Admin {
 	    <h2 class="nav-tab-wrapper">
 	        <?php echo Options_Framework_Interface::optionsframework_tabs(); ?>
 	    </h2>
-        <div style="padding-top:10px;font-size:15px;"><a href="<?php echo esc_url(SKT_PRO_THEME_URL); ?>" target="_blank"><?php _e('Buy PRO version for only $30 with more features.','skt-corp'); ?></a></div>
-        <?php if(isset($_GET['msg']) && !isset($_GET['settings-updated'])){ ?>
-        
-    <div class="updated <?php if($_GET['msg'] == "success") echo "fade"; ?> settings-error" id="setting-error-save_options" style="display: block;"> 
-    <?php if($_GET['msg'] == "error") { ?>
-    <p style="color:#FF0000"><strong>Current active theme is not matching</strong></p>
-    <?php } elseif($_GET['msg'] == "success") { ?>
-    <p><strong>Option Imported successfully</strong></p>
-    <?php } ?>
-    </div>
-    <?php } ?>
-
 
 	    <?php settings_errors( 'options-framework' ); ?>
 
 	    <div id="optionsframework-metabox" class="metabox-holder">
-		    <div id="optionsframework" class="postbox"  style="width:72%; float:left;">
+		    <div id="optionsframework" class="postbox">
 				<form action="options.php" method="post">
 				<?php settings_fields( 'optionsframework' ); ?>
 				<?php Options_Framework_Interface::optionsframework_fields(); /* Settings */ ?>
-
 				<div id="optionsframework-submit">
-					<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'skt-white' ); ?>" />
-					<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'skt-white' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK to reset. Any theme settings will be lost!', 'skt-white' ) ); ?>' );" />
+					<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'options-framework' ); ?>" />
+					<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'options-framework' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK to reset. Any theme settings will be lost!', 'options-framework' ) ); ?>' );" />
 					<div class="clear"></div>
 				</div>
 				</form>
 			</div> <!-- / #container -->
-            <div style="width:25%; float:right;" class="postbox-container side">
-            <div class="meta-box-sortables ui-sortable">
-                <div class="postbox">
-                    <h3 class="hndle"><span><?php _e('Our Themes','skt-white'); ?></span></h3>
-                    <div class="inside">
-						<p><a target="_blank" href="<?php echo esc_url(SKT_THEME_URL); ?>"><img style="max-width:100%" src="<?php echo get_template_directory_uri()?>/images/sktskill.jpg"></a></p>
-                    </div>
-                </div>
-                <div class="postbox">
-                    <h3 class="hndle"><span><?php _e('Need more features?','skt-white'); ?></span></h3>
-                    <div class="inside">
-                        <p><em><a href="<?php echo esc_url(SKT_PRO_THEME_URL);?>" target="_blank"><?php _e('Buy PRO version for only $30 with more features','skt-white'); ?></a></em></p>
-                    </div>
-                </div>
-                <div class="postbox">
-                    <h3 class="hndle"><span><?php _e('Documentation','skt-white'); ?></span></h3>
-                    <div class="inside">
-                        <p><em><?php _e('For documentation and support check this link','skt-white'); ?> : <strong><a href="<?php echo esc_url(SKT_THEME_DOC); ?>" target="_blank">SKT White Documentation</a></strong></em></p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
 		</div>
 		<?php do_action( 'optionsframework_after' ); ?>
 		</div> <!-- / .wrap -->
@@ -262,7 +269,7 @@ class Options_Framework_Admin {
 		 */
 
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( 'options-framework', 'restore_defaults', __( 'Default options restored.', 'skt-white' ), 'updated fade' );
+			add_settings_error( 'options-framework', 'restore_defaults', __( 'Default options restored.', 'options-framework' ), 'updated fade' );
 			return $this->get_default_values();
 		}
 
@@ -316,7 +323,7 @@ class Options_Framework_Admin {
 	 */
 
 	function save_options_notice() {
-		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', 'skt-white' ), 'updated fade' );
+		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', 'options-framework' ), 'updated fade' );
 	}
 
 	/**
@@ -331,6 +338,7 @@ class Options_Framework_Admin {
 	 * @return array Re-keyed options configuration array.
 	 *
 	 */
+
 	function get_default_values() {
 		$output = array();
 		$config = & Options_Framework::_optionsframework_options();
