@@ -229,6 +229,17 @@ class Options_Framework_Admin {
 	        <?php echo Options_Framework_Interface::optionsframework_tabs(); ?>
 	    </h2>
 
+            <?php if(isset($_GET['msg']) && !isset($_GET['settings-updated'])){ ?>
+
+                <div class="updated <?php if($_GET['msg'] == "success") echo "fade"; ?> settings-error" id="setting-error-save_options" style="display: block;">
+                    <?php if($_GET['msg'] == "error") { ?>
+                        <p style="color:#FF0000"><strong>Current active theme is not matching</strong></p>
+                    <?php } elseif($_GET['msg'] == "success") { ?>
+                        <p><strong>Option Imported successfully</strong></p>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+
 	    <?php settings_errors( 'options-framework' ); ?>
 
 	    <div id="optionsframework-metabox" class="metabox-holder">
