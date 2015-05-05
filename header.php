@@ -36,7 +36,6 @@
             <!-- end col-sm-3 -->
 
             <div class="logo">
-                <?php echo of_get_option( 'logo', true );?>
                 <a href="<?php echo esc_url( home_url('/')); ?>">
                     <?php if( of_get_option( 'logo', true ) != '' ) { ; ?>
                         <?php if( of_get_option('logo',true) == 1 ) { ?>
@@ -60,8 +59,7 @@
                     'container' => 'nav',
                     'container_class' => 'col-sm-9 pull-right',
                     'menu_class' => 'nav navbar-nav',
-                    'fallback_cb' => 'false',
-                    'depth' => 2
+                    'fallback_cb' => 'false'
                 )); ?>
 
                 <!-- End Custom Top Menu -->
