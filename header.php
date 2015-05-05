@@ -25,17 +25,24 @@
 
         <div class="row">
 
-            <div class="col-sm-4">
+            <div class="col-sm-6">
 
-                <div class="header-info">
-                    <h3><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h3>
-                </div>
-                <!-- end header-info -->
+                <!-- Custom Top Menu -->
+
+                <?php wp_nav_menu(array(
+                    'theme_location' => 'top-menu',
+                    'container' => 'nav',
+                    'container_class' => 'col-sm-9 pull-left',
+                    'menu_class' => 'nav navbar-nav',
+                    'fallback_cb' => 'false'
+                )); ?>
+
+                <!-- End Custom Top Menu -->
+
 
             </div>
-            <!-- end col-sm-3 -->
 
-            <div class="logo">
+            <div class="logo col-sm-2">
                 <a href="<?php echo esc_url( home_url('/')); ?>">
                     <?php if( of_get_option( 'logo', true ) != '' ) { ; ?>
                         <?php if( of_get_option('logo',true) == 1 ) { ?>
@@ -50,23 +57,20 @@
                 </a>
             </div><!-- logo -->
 
-            <div class="col-sm-8">
 
-                <!-- Custom Top Menu -->
+            <div class="col-sm-4">
 
-                <?php wp_nav_menu(array(
-                    'theme_location' => 'primary',
-                    'container' => 'nav',
-                    'container_class' => 'col-sm-9 pull-right',
-                    'menu_class' => 'nav navbar-nav',
-                    'fallback_cb' => 'false'
-                )); ?>
-
-                <!-- End Custom Top Menu -->
-
+                <div class="header-info">
+                    <h3><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h3>
+                </div>
+                <!-- end header-info -->
 
             </div>
-            <!-- end col-sm-9 -->
+            <!-- end col-sm-3 -->
+
+
+
+
 
         </div>
         <!-- end row -->
