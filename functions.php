@@ -59,7 +59,7 @@ function vision_scripts_styles() {
     wp_enqueue_script('vision-custom',get_template_directory_uri().'/js/vision-custom.js',array('jquery'),'',true);
 
     /* Custom Font */
-    #wp_enqueue_style( 'vision-fonts', vision_fonts_url(), array(), null );
+    wp_enqueue_style( 'vision-fonts', vision_fonts_url(), array(), null );
 
     /* Main Stylesheet */
     wp_enqueue_style( 'vision-style', get_stylesheet_uri(), array(), '' );
@@ -67,6 +67,35 @@ function vision_scripts_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'vision_scripts_styles' );
+
+
+function vision_fonts_url() {
+    $fonts_url = '';
+
+
+    $oswald = _x( 'on', 'Source Sans Pro font: on or off', 'vision' );
+
+
+    $bitter = _x( 'on', 'Bitter font: on or off', 'vision' );
+
+    if ( 'off' !== $oswald || 'off' !== $bitter ) {
+        $font_families = array();
+
+        if ( 'off' !== $oswald )
+            $font_families[] = 'Oswald:400,300,700:latin';
+
+        if ( 'off' !== $bitter )
+            $font_families[] = 'Bitter:400,700';
+
+        $query_args = array(
+            'family' => urlencode( implode( '|', $font_families ) ),
+            'subset' => urlencode( 'latin,latin-ext' ),
+        );
+        $fonts_url = add_query_arg( $query_args, "//fonts.googleapis.com/css" );
+    }
+
+    return $fonts_url;
+}
 
 /**********************************************************************************
 /* Paging *
