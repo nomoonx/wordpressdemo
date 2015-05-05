@@ -9,8 +9,7 @@
               'numberposts' => -1,
               'post_type' => 'post',
               'meta_key' => 'featured_slider'
-             ));
-            echo $slider;?>
+             ));?>
 
 
             <?php foreach($slider as $slide){ ?>
