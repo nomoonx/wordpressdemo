@@ -32,9 +32,10 @@
                 <?php wp_nav_menu(array(
                     'theme_location' => 'top-menu',
                     'container' => 'nav',
-                    'container_class' => 'col-sm-9 pull-left',
+                    'container_class' => 'col-sm-9 pull-right',
                     'menu_class' => 'nav navbar-nav',
-                    'fallback_cb' => 'false'
+                    'fallback_cb' => 'false',
+                    'depth' => 2
                 )); ?>
 
                 <!-- End Custom Top Menu -->
