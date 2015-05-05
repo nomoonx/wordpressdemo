@@ -8,7 +8,7 @@
 
 function optionsframework_option_name() {
 	// Change this to use your theme slug
-	return 'noMoon balalala';
+	return 'optionsframework_white';
 }
 
 /**
@@ -651,20 +651,425 @@ function optionsframework_options() {
 		$font_sizes[$n.'px'] = $n.'px';
 	}
 
+	// array of section content.
+	$section_text = array(
+		1 => array(
+			'section_title'		=> 'Our Services',
+			'menutitle'			=> 'services',
+			'bgcolor' 			=> '#ffffff',
+			'bgimage'			=> '',
+			'class'				=> 'services',
+			'content'			=> '<div id="services-box">
+				<img src="'.get_template_directory_uri().'/images/icon-web-design.png">
+				<h2>Web <span>Design</span></h2>
+				<p>Lorem Ipsum is simply dummy text of they printing and typesetting industry. Lore Ipsum has been the industry standard in dummy text ever since the 1500s, when an unknown printer took a galley of type andin scrambled it to make a type book.</p>
+				<a href="#" class="read-more">Read More</a>
+				</div><div id="services-box">
+				<img src="'.get_template_directory_uri().'/images/icon-web-design.png">
+				<h2>Web <span>Development</span></h2>
+				<p>Lorem Ipsum is simply dummy text of they printing and typesetting industry. Lore Ipsum has been the industrys standard in dummy text ever since the 1500s, when an unknown printer took a galley of type andin scrambled it to make a type book.</p>
+				<a href="#" class="read-more">Read More</a>
+				</div><div id="services-box">
+				<img src="'.get_template_directory_uri().'/images/icon-responsive.png">
+				<h2>Mobile <span>Website</span></h2>
+				<p>Lorem Ipsum is simply dummy text of they printing and typesetting industry. Lore Ipsum has been the industrys standard in dummy text ever since the 1500s, when an unknown printer took a galley of type andin scrambled it to make a type book.</p>
+				<a href="#" class="read-more">Read More</a>
+				</div><div id="services-box">
+				<img src="'.get_template_directory_uri().'/images/icon-wordpress.png">
+				<h2>WordPress <span>Themes</span></h2>
+				<p>Lorem Ipsum is simply dummy text of they printing and typesetting industry. Lore Ipsum has been the industrys standard in dummy text ever since the 1500s, when an unknown printer took a galley of type andin scrambled it to make a type book.</p>
+				<a href="#" class="read-more">Read More</a>
+				</div>',
+			
+		),
+		
+		2 => array(
+			'section_title'	=> '',
+			'menutitle'		=> '',
+			'bgcolor' 		=> '',
+			'bgimage'		=> get_template_directory_uri()."/images/contact-banner.jpg",
+			'class'			=> 'contact-banner',
+			'content'		=> '<h3>Do you like SKT White? Is it everything you wanted from a theme?</h3>
+            <a class="contact-button" href="#">Contact Us</a>',
+		),
+
+		3 => array(
+			'section_title'	=> 'A message from our manager',
+			'menutitle'		=> '',
+			'bgcolor' 		=> '#ffffff',
+			'menutitle'		=> '',
+			'bgimage'		=> '',
+			'class'			=> 'gry-row',
+			'content'		=> '<div class="one_half"><div class="message-thumb"><img src="'.get_template_directory_uri().'/images/manager-img.jpg" /></div></div><div class="one_half last"><div class="message-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet ex at mauris varius interdum. Fusce mattis gravida libero, nec sollicitudin eros finibus at. Praesent ex diam, mattis vitae efficitur vel, egestas sed neque. Sed congue interdum cursus. Nullam in tincidunt neque. Cras enim tortor, porta id tempor vel, placerat et tellus. Vestibulum eget ullamcorper orci. Suspendisse potenti. Proin rutrum magna ac gravida scelerisque. Nunc eu sodales nisi. Curabitur ligula quam, maximus commodo sodales ut, pretium eget ipsum. Proin lobortis, nibh vel fringilla dictum, ipsum tortor cursus ex, facilisis cursus sapien sem at sem. Mauris in risus ac massa congue volutpat sit amet at metus. Ut in metus posuere, rutrum risus eget, aliquam arcu. Curabitur tincidunt, nulla ut pellentesque aliquet, mi risus pharetra sem, at euismod tortor eros imperdiet turpis.
+			<br/>Donec ut ex ac nulla pellentesque mollis in a enim. Praesent placerat sapien mauris, vitae sodales tellus venenatis ac. Suspendisse suscipit velit id ultricies auctor. Duis turpis arcu, aliquet sed sollicitudin sed, porta quis urna. Quisque velit nibh, egestas et erat a, vehicula interdum augue. Morbi ut elementum justo. Fusce mattis gravida libero, nec sollicitudin eros finibus at. Praesent ex diam, mattis vitae efficitur vel, egestas sed neque. Sed congue interdum cursus. Nullam in tincidunt neque. Cras enim tortor, porta id tempor vel, placerat et tellus. Vestibulum eget ullamcorper orci. Suspendisse potenti. Proin rutrum magna ac gravida scelerisque. Nunc eu sodales nisi.</div></div>',
+		),
+		
+		4 => array(
+			'section_title'	=> 'Our Statistics',
+			'menutitle'		=> 'stat',
+			'bgcolor' 		=> '',
+			'bgimage'		=> get_template_directory_uri().'/images/stat-banner.jpg',
+			'class'			=> 'stat',
+			'content'		=> '<ul id="some-facts">
+			<li><h2>2000</h2><h5>Download</h5></li><li><h2>300</h2><h5>Projects Done</h5></li><li><h2>400</h2><h5>Happy Clients</h5></li><li><h2>100</h2><h5>Awards Won</h5></li><br>
+			</ul>',
+			
+		),
+		
+		5 => array(
+			'section_title'	=> 'Our Support',
+			'menutitle'		=> 'support',
+			'bgcolor' 		=> '#ffffff',
+			'bgimage'		=> '',
+			'class'			=> 'our-team',
+			'content'		=> '<div class="team-desc"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia malesuada mi vitae tristique. Donec fringilla ullamcorper nulla sed gravida. Vestibulum quis sollicitudin nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis odio augue, efficitur non viverra a, fermentum sit amet felis. Cras scelerisque purus eu pellentesque feugiat. Curabitur ut bibendum ante. Sed et ex blandit, auctor purus mollis, euismod mi. Fusce vel nisi sit amet dolor condimentum ultricies. Morbi sagittis arcu sed odio finibus eleifend. Pellentesque nunc purus, scelerisque rutrum sem eu, accumsan tempor orci. Aliquam neque neque, elementum et nunc non, sodales fringilla turpis.</div>'
+		),
+		
+		6 => array(
+			'section_title'	=> 'Our Projects',
+			'menutitle'		=> 'portfolio',
+			'bgcolor' 		=> '#ffffff',
+			'bgimage'		=> '',
+			'class'			=> 'our-projects',
+			'content'		=> '<a class="example-image-link" href="'.get_template_directory_uri().'/images/banner-seventh.jpg" data-lightbox="example-set" data-title="Title 1"><img src="'.get_template_directory_uri().'/images/banner-seventh.jpg"></a><a class="example-image-link" href="'.get_template_directory_uri().'/images/banner-sixth.jpg" data-lightbox="example-set" data-title="Title 2"><img src="'.get_template_directory_uri().'/images/banner-sixth.jpg"></a><a class="example-image-link" href="'.get_template_directory_uri().'/images/banner-fifth.jpg" data-lightbox="example-set" data-title="Title 3"><img src="'.get_template_directory_uri().'/images/banner-fifth.jpg"></a><a class="example-image-link" href="'.get_template_directory_uri().'/images/banner-fourth.jpg" data-lightbox="example-set" data-title="Title 4"><img style="margin-right:0;" src="'.get_template_directory_uri().'/images/banner-fourth.jpg"></a><a class="example-image-link" href="'.get_template_directory_uri().'/images/banner-nine.jpg" data-lightbox="example-set" data-title="Title 5"><img src="'.get_template_directory_uri().'/images/banner-nine.jpg"></a><a class="example-image-link" href="'.get_template_directory_uri().'/images/banner-ten.jpg" data-lightbox="example-set" data-title="Title 6"><img src="'.get_template_directory_uri().'/images/banner-ten.jpg"></a><a class="example-image-link" href="'.get_template_directory_uri().'/images/banner-sixth.jpg" data-lightbox="example-set" data-title="Title 7"><img src="'.get_template_directory_uri().'/images/banner-sixth.jpg"></a><a class="example-image-link" href="'.get_template_directory_uri().'/images/banner-fifth.jpg" data-lightbox="example-set" data-title="Title 8"><img style="margin-right:0;" src="'.get_template_directory_uri().'/images/banner-fifth.jpg"></a>'
+		),
+		
+		7 => array(
+			'section_title'	=> 'Our Clients',
+			'menutitle'		=> 'contact',
+			'bgcolor' 		=> '#ffffff',
+			'bgimage'		=> '',
+			'class'			=> 'client_banner',
+			'content'		=> '<div class="client "><a href="#"><img src="'.get_template_directory_uri().'/images/compact-logo.jpg"></a></div><div class="client "><a href="#"><img src="'.get_template_directory_uri().'/images/tv-digital-logo.jpg"></a></div><div class="client "><a href="#"><img src="'.get_template_directory_uri().'/images/changes-logo.jpg"></a></div><div class="client "><a href="#"><img src="'.get_template_directory_uri().'/images/finance-logo.jpg"></a></div><div class="client last"><a href="#"><img src="'.get_template_directory_uri().'/images/thousand-logo.jpg"></a></div><div class="client "><a href="#"><img src="'.get_template_directory_uri().'/images/finance-logo.jpg"></a></div><div class="client "><a href="#"><img src="'.get_template_directory_uri().'/images/thousand-logo.jpg"></a></div><div class="client "><a href="#"><img src="'.get_template_directory_uri().'/images/changes-logo.jpg"></a></div><div class="client "><a href="#"><img src="'.get_template_directory_uri().'/images/tv-digital-logo.jpg"></a></div><div class="client last"><a href="#"><img src="'.get_template_directory_uri().'/images/compact-logo.jpg"></a></div>'
+		),
+	);
+
 	$options = array();
 
 	//Basic Settings
 	$options[] = array(
-		'name' => __('Basic Settings', 'noMoon-balalala'),
+		'name' => __('Basic Settings', 'skt-white'),
 		'type' => 'heading');
 
 	$options[] = array(
-		'name' => __('Logo', 'noMoon-balalala'),
-		'desc' => __('Upload your main logo here', 'noMoon-balalala'),
+		'name' => __('Logo', 'skt-white'),
+		'desc' => __('Upload your main logo here', 'skt-white'),
 		'id' => 'logo',
 		'class' => '',
 		'std'	=> '',
 		'type' => 'upload');
+
+	$options[] = array(
+		'name' => __('Favicon', 'skt-white'),
+		'desc' => __('Upload favicon for website', 'skt-white'),
+		'id' => 'favicon',
+		'class' => '',
+		'std'	=> '',
+		'type' => 'upload');
+
+		
+		
+	// Background start
+	$options[] = array(
+		'name' => __('Color Scheme', 'skt-white'),
+		'desc' => __('Select color scheme.', 'skt-white'),
+		'id' => 'colorscheme',
+		'std' => '#00a8ff',
+		'type' => 'color');
+		
+
+
+	//Layout Settings
+	$options[] = array(
+		'name' => __('Sections', 'skt-white'),
+		'type' => 'heading');
+
+	$options[] = array(
+		'name' => __('Number of Sections', 'skt-white'),
+		'desc' => __('Select number of sections', 'skt-white'),
+		'id' => 'numsection',
+		'type' => 'select',
+		'std' => '7',
+		'options' => array_combine(range(1,30), range(1,30)) );
+
+	$numsecs = of_get_option( 'numsection', 7 );
+
+	for( $n=1; $n<=$numsecs; $n++){
+		$options[] = array(
+			'desc' => sprintf("<h3>Section ".$n."</h3>", 'skt-white'),
+			'class' => 'toggle_title',
+			'type' => 'info');	
+	
+		$options[] = array(
+			'name' => __('Section Title', 'skt-white'),
+			'id' => 'sectiontitle'.$n,
+			'std' => ( ( isset($section_text[$n]['section_title']) ) ? $section_text[$n]['section_title'] : '' ),
+			'type' => 'text');
+
+		$options[] = array(
+			'name' => __('Section ID', 'skt-white'),
+			'desc'	=> __('Enter your section ID here. SECTION ID MUST BE IN SMALL LETTERS ONLY AND DO NOT ADD SPACE OR SYMBOL.','skt-white'),
+			'id' => 'menutitle'.$n,
+			'std' => ( ( isset($section_text[$n]['menutitle']) ) ? $section_text[$n]['menutitle'] : '' ),
+			'type' => 'text');
+
+		$options[] = array(
+			'name' => __('Section Background Color', 'skt-white'),
+			'desc' => __('Select background color for section', 'skt-white'),
+			'id' => 'sectionbgcolor'.$n,
+			'std' => ( ( isset($section_text[$n]['bgcolor']) ) ? $section_text[$n]['bgcolor'] : '' ),
+			'type' => 'color');
+			
+		$options[] = array(
+			'name' => __('Background Image', 'skt-white'),
+			'id' => 'sectionbgimage'.$n,
+			'class' => '',
+			'std' => ( ( isset($section_text[$n]['bgimage']) ) ? $section_text[$n]['bgimage'] : '' ),
+			'type' => 'upload');
+
+		$options[] = array(
+			'name' => __('Section CSS Class', 'skt-white'),
+			'desc' => __('Set class for this section.', 'skt-white'),
+			'id' => 'sectionclass'.$n,
+			'std' => ( ( isset($section_text[$n]['class']) ) ? $section_text[$n]['class'] : '' ),
+			'type' => 'text');
+			
+		$options[] = array(
+			'name'	=> __('Hide Section', 'skt-white'),
+			'desc'	=> __('Check to hide this section', 'skt-white'),
+			'id'	=> 'hidesec'.$n,
+			'type'	=> 'checkbox',
+			'std'	=> '');
+
+		$options[] = array(
+			'name' => __('Section Content', 'skt-white'),
+			'id' => 'sectioncontent'.$n,
+			'std' => ( ( isset($section_text[$n]['content']) ) ? $section_text[$n]['content'] : '' ),
+			'type' => 'editor');
+	}
+
+
+	//SLIDER SETTINGS
+	$options[] = array(
+		'name' => __('Homepage Slider', 'skt-white'),
+		'type' => 'heading');
+		
+	$options[] = array(
+		'name' => __('Inner Page Slider', 'skt-white'),
+		'desc' => __('Show / Hide inner page slider', 'skt-white'),
+		'id' => 'innerpageslider',
+		'type' => 'select',
+		'std' => 'hide',
+		'options' => array('show'=>'Show', 'hide'=>'Hide') );
+		
+	$options[] = array(
+		'name' => __('Slider Title', 'skt-white'),
+		'id' => 'header_title',
+		'std' => '<h1>SKT White</h1>
+				 <p>Aliquam vitae nunc nibh. Nam sollicitudin orci vel eros vulputate vestibulum.</p><br/>
+				 <a href="#">Contact Us</a>',
+		'type' => 'editor');
+
+	$options[] = array(
+		'name' => __('Slider Image 1', 'skt-white'),
+		'desc' => __('Upload / select image for slide 1', 'skt-white'),
+		'id' => 'slide1',
+		'class' => '',
+		'std' => get_template_directory_uri()."/images/slides/slider1.jpg",
+		'type' => 'upload');
+
+
+	$options[] = array(
+		'name' => __('Slider Image 2', 'skt-white'),
+		'desc' => __('Upload / select image for slide 2', 'skt-white'),
+		'id' => 'slide2',
+		'class' => '',
+		'std' => get_template_directory_uri()."/images/slides/slider2.jpg",
+		'type' => 'upload');
+
+	$options[] = array(
+		'name' => __('Slider Image 3', 'skt-white'),
+		'desc' => __('Upload / select image for slide 3', 'skt-white'),
+		'id' => 'slide3',
+		'class' => '',
+		'std' => get_template_directory_uri()."/images/slides/slider3.jpg",
+		'type' => 'upload');
+		
+	$options[] = array(
+		'name' => __('Slider Image 4', 'skt-white'),
+		'desc' => __('Upload / select image for slide 4', 'skt-white'),
+		'id' => 'slide4',
+		'class' => '',
+		'std' => '',
+		'type' => 'upload');
+		
+	$options[] = array(
+		'name' => __('Slider Image 5', 'skt-white'),
+		'desc' => __('Upload / select image for slide 5', 'skt-white'),
+		'id' => 'slide5',
+		'class' => '',
+		'std' => '',
+		'type' => 'upload');
+		
+
+	//Social SETTINGS
+	$options[] = array(
+		'name' => __('Social Settings', 'skt-white'),
+		'type' => 'heading');
+		
+	$options[] = array(
+		'name' => __('Social Title', 'skt-white'),
+		'desc' => __('Add social section title here', 'skt-white'),
+		'id' => 'socialtitle',
+		'std' => 'We Are Everywhere!',
+		'type' => 'text',);
+
+	$options[] = array(
+		'desc' => __('Facebook Url with "http://"', 'skt-white'),
+		'id' => 'facebook',
+		'std' => '#facebook',
+		'type' => 'text',
+		'subtype' => 'url');
+
+	$options[] = array(
+		'desc' => __('Twitter Url with "http://"', 'skt-white'),
+		'id' => 'twitter',
+		'std' => '#twitter',
+		'type' => 'text',
+		'subtype' => 'url');
+		
+	$options[] = array(
+		'desc' => __('Google Plus Url with "http://"', 'skt-white'),
+		'id' => 'gplus',
+		'std' => '#gplus',
+		'type' => 'text',
+		'subtype' => 'url');
+		
+	$options[] = array(
+		'desc' => __('LinkedIn Url with "http://"', 'skt-white'),
+		'id' => 'linkedin',
+		'std' => '#linkedin',
+		'type' => 'text',
+		'subtype' => 'url');
+		
+	$options[] = array(
+		'desc' => __('Pinterest Url with "http://"', 'skt-white'),
+		'id' => 'pint',
+		'std' => '#pinterest',
+		'type' => 'text',
+		'subtype' => 'url');
+
+	$options[] = array(
+		'desc' => __('YouTube Url with "http://"', 'skt-white'),
+		'id' => 'youtube',
+		'std' => '#youtube',
+		'type' => 'text',
+		'subtype' => 'url');
+		
+	$options[] = array(
+		'desc' => __('Vimeo Url with "http://"', 'skt-white'),
+		'id' => 'vimeo',
+		'std' => '#vimeo',
+		'type' => 'text',
+		'subtype' => 'url');
+
+	$options[] = array(
+		'desc' => __('RSS Url with "http://"', 'skt-white'),
+		'id' => 'rss',
+		'std' => '#rss',
+		'type' => 'text',
+		'subtype' => 'url');
+		
+	$options[] = array(
+		'desc' => __('Instagram Url with "http://"', 'skt-white'),
+		'id' => 'insta',
+		'std' => '#instagram',
+		'type' => 'text',
+		'subtype' => 'url');
+
+
+	//Footer SETTINGS
+	$options[] = array(
+		'name' => __('Footer', 'skt-white'),
+		'type' => 'heading');
+		
+	$options[] = array(
+		'name' => __('Footer About Section', 'skt-white'),
+		'desc' => __('About text title.', 'skt-white'),
+		'id' => 'footerabttitle',
+		'std' => 'About SKT White',
+		'type' => 'text');
+
+	$options[] = array(
+		'desc' => __('Some text for footer of your site, you would like to display in the footer.', 'skt-white'),
+		'id' => 'footerabttext',
+		'std' => 'Donec ut ex ac nulla pellentesque mollis in a enim. Praesent placerat sapien mauris, vitae sodales tellus venenatis ac. Suspendisse suscipit velit id ultricies auctor. Duis turpis arcu, aliquet sed sollicitudin sed, porta quis urna. Quisque velit nibh, egestas et erat a, vehicula interdum augue. Morbi ut elementum justo. Sed eu nibh orci. Vivamus elementum erat orci. Curabitur consequat convallis dapibus.',
+		'type' => 'textarea');
+		
+	$options[] = array(
+		'name' => __('Footer Recent Posts', 'skt-white'),
+		'desc' => __('Footer recent post title.', 'skt-white'),
+		'id' => 'recenttitle',
+		'std' => 'Recent Posts',
+		'type' => 'text');
+		
+	$options[] = array(
+		'name' => __('Footer Address Title', 'skt-white'),
+		'desc' => __('Footer Address title.', 'skt-white'),
+		'id' => 'addresstitle',
+		'std' => 'SKT White',
+		'type' => 'text');
+		
+	$options[] = array(
+		'desc' => __('Add company address here.', 'skt-white'),
+		'id' => 'address',
+		'std' => 'Street 238,52 tempor Donec ultricies mattis nulla, suscipit risus tristique ut.',
+		'type' => 'text');
+		
+	$options[] = array(
+		'desc' => __('Add phone number here.', 'skt-white'),
+		'id' => 'phone',
+		'std' => '+1 500 000 0000',
+		'type' => 'text');
+		
+	$options[] = array(
+		'desc' => __('Add email address here.', 'skt-white'),
+		'id' => 'email',
+		'std' => 'demo@lorem.com',
+		'type' => 'text');
+		
+	$options[] = array(
+		'desc' => __('Add company url here with http://.', 'skt-white'),
+		'id' => 'weblink',
+		'std' => 'http://www.websitedomain.com',
+		'type' => 'text');
+		
+	$options[] = array(
+		'name' => __('Footer Copyright', 'skt-white'),
+		'desc' => __('Copyright Text for your site.', 'skt-white'),
+		'id' => 'copytext',
+		'std' => '&copy; 2014 SKT White. All Rights Reserved',
+		'type' => 'text');
+		
+	$options[] = array(
+		'desc' => __('Footer Text Link', 'skt-white'),
+		'id' => 'ftlink',
+		'std' => 'Design by <a href="'.esc_url(SKT_SITE_URL).'" target="_blank">SKT  Themes</a>',
+		'type' => 'textarea',);
+		
+
+	// Support					
+	$options[] = array(
+		'name' => __('Our Themes', 'skt-white'),
+		'type' => 'heading');
+
+	$options[] = array(
+		'desc' => __('SKT White WordPress theme has been Designed and Created by SKT Themes.', 'skt-white'),
+		'type' => 'info');	
+
+	 $options[] = array(
+		'desc' => '<a href="'.esc_url(SKT_SITE_URL).'" target="_blank"><img src="'.get_template_directory_uri().'/images/sktskill.jpg"></a><p><em><a target="_blank" href="'.esc_url(SKT_PRO_THEME_URL).'">'.__('Buy PRO version for only $30 with more features.','skt-white').'</a></em></p>',
+		'type' => 'info');	
 	
 	return $options;
 }
