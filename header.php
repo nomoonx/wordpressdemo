@@ -46,12 +46,8 @@
             <div class="logo col-sm-2">
                 <a href="<?php echo esc_url( home_url('/')); ?>">
                     <?php if( of_get_option( 'logo', true ) != '' ) { ; ?>
-                        <?php if( of_get_option('logo',true) == 1 ) { ?>
-                            <h1><?php bloginfo('name'); ?></h1>
-                            <p><?php bloginfo('description'); ?></p>
-                        <?php } else { ?>
                             <img src="<?php echo esc_url( of_get_option( 'logo', true )); ?>" / >
-                                        <?php } } else { ?>
+                                        <?php } else { ?>
                         <h1><?php bloginfo('name'); ?></h1>
                     <?php } ?>
                     <p><?php bloginfo('description'); ?></p>
