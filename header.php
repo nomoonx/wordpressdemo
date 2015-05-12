@@ -25,7 +25,7 @@
 
         <div class="row">
 
-            <div class="col-sm-6">
+            <div class="col-sm-5">
 
                 <!-- Custom Top Menu -->
 
@@ -50,12 +50,11 @@
                                         <?php } else { ?>
                         <h1><?php bloginfo('name'); ?></h1>
                     <?php } ?>
-                    <p><?php bloginfo('description'); ?></p>
                 </a>
             </div><!-- logo -->
 
 
-            <div class="col-sm-4">
+            <div class="col-sm-5">
 
                 <div class="header-info">
                     <h3><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h3>
