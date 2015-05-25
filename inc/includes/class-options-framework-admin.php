@@ -185,7 +185,7 @@ class Options_Framework_Admin {
 	    <h2 class="nav-tab-wrapper">
 	        <?php echo Options_Framework_Interface::optionsframework_tabs(); ?>
 	    </h2>
-        <div style="padding-top:10px;font-size:15px;"><a href="<?php echo esc_url(SKT_PRO_THEME_URL); ?>" target="_blank"><?php _e('Buy PRO version for only $30 with more features.','skt-corp'); ?></a></div>
+
         <?php if(isset($_GET['msg']) && !isset($_GET['settings-updated'])){ ?>
         
     <div class="updated <?php if($_GET['msg'] == "success") echo "fade"; ?> settings-error" id="setting-error-save_options" style="display: block;"> 
