@@ -44,17 +44,19 @@
             </div>
 
             <div class="logo col-sm-2">
-                <a href="<?php echo esc_url( home_url('/')); ?>">
-                    <?php if( of_get_option( 'logo', true ) != '' ) { ; ?>
-                            <img src="<?php echo esc_url( of_get_option( 'logo', true )); ?>" / >
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+                    <?php if (of_get_option('logo', true) != '') {
+                        ; ?>
+                        <img src="<?php echo esc_url(of_get_option('logo', true)); ?>" / >
                                         <?php } else { ?>
                         <h1><?php bloginfo('name'); ?></h1>
                     <?php } ?>
                 </a>
-            </div><!-- logo -->
+            </div>
+            <!-- logo -->
 
 
-            <div class="col-sm-5">
+            <div class="col-sm-4">
 
                 <div class="header-info">
                     <h3><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h3>
@@ -64,8 +66,10 @@
             </div>
             <!-- end col-sm-3 -->
 
-
-
+            <div class="col-sm-1">
+                <div class="header-search-icon"></div>
+                <?php get_search_form(); ?>
+            </div>
 
 
         </div>

@@ -12,7 +12,7 @@
 
 				<div class="bookmark">
 					
-					<p><?php _e('Theme by','vision'); ?> <a href="http://burak-aydin.com">Burak Aydin</a> | <span><?php _e('Powered by','vision'); ?></span> <a href="http://wordpress.org">WordPress</a></p>
+					<p><?php _e('Theme by','noMoon'); ?> <a href="http://demo.nomoon.me">noMoon</a> | <span><?php _e('Powered by','vision'); ?></span> <a href="http://wordpress.org">WordPress</a></p>
 
 				</div> <!-- end bookmark -->
 
