@@ -18,7 +18,7 @@
     margin-top: 12px !important;
 }
 
-#masthead .search-form {
+.top-header .search-form {
     float: right;
     position: absolute;
     right: 0;
@@ -28,10 +28,10 @@
     display: none;
     z-index: 999;
 }
-#masthead .search-form .search-field {
+.top-header .search-form .search-field {
     width: 180px;
 }
-#masthead .search-form input[type="submit"] {
+.top-header .search-form input[type="submit"] {
     display: none;
 }
 .header-search-icon {
@@ -41,8 +41,8 @@
     cursor: pointer;
 }
 .header-search-icon:before {
-    content: '\f400';
-    color: #632E9B;
+    content: '\f002';
+    color: #fb4b3e;
     display: inline-block;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
