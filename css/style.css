@@ -41,12 +41,12 @@
     cursor: pointer;
 }
 .header-search-icon:before {
+    font-family: "FontAwesome";
     content: '\f002';
     color: #fb4b3e;
     display: inline-block;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font: normal 40px/1 'Genericons';
     vertical-align: top;
 }
 /**********************************************************************************
