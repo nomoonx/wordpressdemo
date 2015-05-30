@@ -35,15 +35,16 @@
     display: none;
 }
 .header-search-icon {
+
     float: right;
-    border-left: 1px solid #E1E4E6;
     padding: 14px 10px 10px 10px;
     cursor: pointer;
 }
 .header-search-icon:before {
     font-family: "FontAwesome";
     content: '\f002';
-    color: #fb4b3e;
+    color: #ffffff;
+    font-size: 24px;
     display: inline-block;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

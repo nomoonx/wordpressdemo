@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 
     jQuery(".header-search-icon").click(function(){
-        jQuery("#masthead .search-form").toggle('slow');
+        jQuery(".top-header .search-form").toggle('slow');
     });
 
 
