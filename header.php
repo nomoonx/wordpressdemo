@@ -67,7 +67,7 @@
             <!-- end col-sm-3 -->
 
             <div class="col-sm-1">
-                <div class="fa fa-search"></div>
+                <div class="header-search-icon"></div>
                 <?php get_search_form(); ?>
             </div>
 

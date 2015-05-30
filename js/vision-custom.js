@@ -1,5 +1,9 @@
 jQuery(document).ready(function($){
 
+    jQuery(".header-search-icon").click(function(){
+        jQuery("#masthead .search-form").toggle('slow');
+    });
+
 
 /**********************************************************************************
 /* Top Header Menu *

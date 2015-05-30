@@ -59,6 +59,8 @@ function vision_scripts_styles() {
 
     wp_enqueue_script('vision-custom',get_template_directory_uri().'/js/vision-custom.js',array('jquery'),'',true);
 
+    wp_enqueue_script('custom',get_template_directory_uri().'/js/custom.js',array('jquery'),'',true);
+
     /* Custom Font */
     wp_enqueue_style( 'vision-fonts', vision_fonts_url(), array(), null );
 
