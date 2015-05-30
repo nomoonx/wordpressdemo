@@ -22,14 +22,15 @@
     float: right;
     position: absolute;
     right: 0;
-    top: 65px;
-    background-color: #632E9B;
+    top: 98px;
+    background-color: #1c1c1d;
     padding: 10px 20px;
     display: none;
     z-index: 999;
 }
 .top-header .search-form .search-field {
     width: 180px;
+    color: black;
 }
 .top-header .search-form input[type="submit"] {
     display: none;
