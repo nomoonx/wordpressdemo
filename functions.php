@@ -21,8 +21,9 @@ function vision_setup() {
 
     /* Menu */
     register_nav_menus(array(
-        'top-menu' => __( 'Top Menu', 'vision' ),
-        'mobile-menu' => __('Mobile Top Menu', 'vision')
+        'top-menu' => __( 'Top Menu', 'noMoon' ),
+        'mobile-menu' => __('Mobile Top Menu', 'noMoon'),
+        'top-right-menu' => __('Top Right Menu', 'noMoon')
     ));
 
 
