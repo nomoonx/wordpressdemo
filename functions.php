@@ -100,6 +100,63 @@ function vision_fonts_url() {
     return $fonts_url;
 }
 
+//widgets
+function noMoon_widgets(){
+
+    /* Dynamic Sidebar */
+    register_sidebar(array(
+        'id'          => 'sidebar',
+        'name'        => __( 'Right Sidebar', 'vision' ),
+        'description' => __( 'This sidebar is located right side.', 'vision' ),
+        'before_widget' => '<div class="widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ));
+
+
+
+    /* Footer Widget 1 */
+    register_sidebar(array(
+        'id'          => 'footer-1',
+        'name'        => __( 'Left Footer Widget', 'vision' ),
+        'description' => __( 'This widget is located left side.', 'vision' ),
+        'before_widget' => '<div class="footer-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ));
+
+
+
+
+    /* Footer Widget 2 */
+    register_sidebar(array(
+        'id'          => 'footer-2',
+        'name'        => __( 'Middle Footer Widget', 'vision' ),
+        'description' => __( 'This widget is located left side.', 'vision' ),
+        'before_widget' => '<div class="footer-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ));
+
+
+
+    /* Footer Widget 3 */
+    register_sidebar(array(
+        'id'          => 'footer-3',
+        'name'        => __( 'Right Footer Widget', 'vision' ),
+        'description' => __( 'This widget is located left side.', 'vision' ),
+        'before_widget' => '<div class="footer-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ));
+
+}
+add_action('widgets_init', 'noMoon_widgets');
+
 /**********************************************************************************
 /* Paging *
  **********************************************************************************/
