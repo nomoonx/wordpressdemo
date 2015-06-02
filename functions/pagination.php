@@ -21,6 +21,7 @@ if ( ! function_exists( 'vision_pagenavi' ) ) :
       'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
       'format' => '?paged=%#%',
       'current' => max( 1, get_query_var('paged') ),
+        'end_size'=>2,
       'total' => $wp_query->max_num_pages
     ) );
 
