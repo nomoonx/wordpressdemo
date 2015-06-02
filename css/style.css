@@ -51,6 +51,14 @@
     -moz-osx-font-smoothing: grayscale;
     vertical-align: top;
 }
+
+#footer-wechat-icon:before{
+    font-family: "FontAwesome";
+    content: '\f1d7';
+    color: #ffffff;
+    background-color: #1c1c1d;
+    border-radius:50%;
+}
 /**********************************************************************************
 /* General *
 **********************************************************************************/

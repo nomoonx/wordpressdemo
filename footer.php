@@ -1,17 +1,25 @@
 <footer class="bottom-footer">
-		
+
 		<div class="container">
-			
+
+            <div class="row">
+                <div class="col-md-1"/>
+                <div class="col-md-2">
+                    <div id="footer-wechat-icon"/>
+                </div>
+                <div class="col-md-1"/>
+            </div>
+
 			<div class="row">
-				
+
 				<div class="copyright">
-					
+
 					<p>&copy; <?php echo date('Y'); ?> <span class="footer-desc">| <?php _e('All Rights Reserved','vision'); ?> | <?php bloginfo('description' ); ?></span></p>
 
 				</div> <!-- end copyright -->
 
 				<div class="bookmark">
-					
+
 					<p><?php _e('Theme by','noMoon'); ?> <a href="http://demo.nomoon.me">noMoon</a> | <span><?php _e('Powered by','vision'); ?></span> <a href="http://wordpress.org">WordPress</a></p>
 
 				</div> <!-- end bookmark -->
