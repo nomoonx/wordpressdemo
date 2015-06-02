@@ -3,7 +3,13 @@
         <div class="row">
             <div class="col-md-1"/>
             <div class="col-md-2">
-                <div id="footer-wechat-icon"/>
+                <?php if( of_get_option('wechat',true) != '') { ?>
+                    <div id="footer-wechat-icon" class="footer-social-icon">
+                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
+                    </div>
+
+                <?php } ?>
+
             </div>
             <div class="col-md-1"/>
         </div>
