@@ -47,7 +47,7 @@
                 <a href="<?php echo esc_url(home_url('/')); ?>">
                     <?php if (of_get_option('logo', true) != '') {
                         ; ?>
-                        <img src="<?php echo esc_url(of_get_option('logo', true)); ?>" / >
+                        <img src="<?php echo esc_url(of_get_option('logo', true)); ?>" />
                                         <?php } else { ?>
                         <h1><?php bloginfo('name'); ?></h1>
                     <?php } ?>
