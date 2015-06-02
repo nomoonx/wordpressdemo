@@ -14,6 +14,7 @@
 
 							<p><?php _e('Page not found.', 'vision'); ?></p>
                             <?php echo  $_SERVER['PATH_INFO'];?>
+                            <?php echo mb_convert_encoding($_SERVER['PATH_INFO'], 'UTF-8', 'GBK');?>
 
 						</div> <!-- end error-page -->
 
