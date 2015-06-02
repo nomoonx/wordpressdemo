@@ -12,9 +12,8 @@
 
 							<h1><i class="fa fa-chain-broken"></i>&nbsp;404</h1>
 
-							<p><?php _e('Page not found. You can search below', 'vision'); ?></p>
-
-							<?php get_search_form(); ?>	
+							<p><?php _e('Page not found.', 'vision'); ?></p>
+                            <?php echo  $_SERVER['PATH_INFO'];?>
 
 						</div> <!-- end error-page -->
 
