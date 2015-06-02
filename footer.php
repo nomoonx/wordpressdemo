@@ -1,14 +1,17 @@
+<footer class="social-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"/>
+            <div class="col-md-2">
+                <div id="footer-wechat-icon"/>
+            </div>
+            <div class="col-md-1"/>
+        </div>
+    </div>
+</footer>
 <footer class="bottom-footer">
 
 		<div class="container">
-
-            <div class="row">
-                <div class="col-md-1"/>
-                <div class="col-md-2">
-                    <div id="footer-wechat-icon"/>
-                </div>
-                <div class="col-md-1"/>
-            </div>
 
 			<div class="row">
 
