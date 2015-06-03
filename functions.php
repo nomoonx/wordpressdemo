@@ -44,10 +44,10 @@ $optionsfile = locate_template( 'options.php' );
 load_template( $optionsfile );
 
 function vision_scripts_styles() {
-/*
+
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
         wp_enqueue_script( 'comment-reply' );
-*/
+
 
     /* Jquery Files */
 
