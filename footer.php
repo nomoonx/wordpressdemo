@@ -6,7 +6,7 @@
                 <?php if( of_get_option('wechat',true) != '') { ?>
                         <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">
                             <div id="footer-wechat-icon" class="footer-social-icon"></div>
-                            <div>
+                            <div class="footer-social-hypertext">
                                 微信公众号
                             </div>
                         </a>

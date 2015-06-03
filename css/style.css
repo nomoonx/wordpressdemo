@@ -54,6 +54,9 @@
 
 .social-footer a:hover{
     color: #fb4b3e;
+    background-color: #1c1c1d;
+    -webkit-transition: color .5s linear,background-color .5s linear;
+    transition: color .5s linear, background-color .5s linear;
 }
 
 .footer-social-icon{
@@ -62,6 +65,12 @@
     border-radius: 50%;
     background-color: #1c1c1d;
     padding-top: 6px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.footer-social-hypertext{
+    display: inline-block;
 }
 
 #footer-wechat-icon:before{
