@@ -11,6 +11,42 @@
                 <?php } ?>
 
             </div>
+            <div class="col-md-2">
+                <?php if( of_get_option('wechat',true) != '') { ?>
+                    <span id="footer-wechat-icon" class="footer-social-icon"></span>
+                    <span>
+                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
+                    </span>
+                <?php } ?>
+
+            </div>
+            <div class="col-md-2">
+                <?php if( of_get_option('wechat',true) != '') { ?>
+                    <span id="footer-wechat-icon" class="footer-social-icon"></span>
+                    <span>
+                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
+                    </span>
+                <?php } ?>
+
+            </div>
+            <div class="col-md-2">
+                <?php if( of_get_option('wechat',true) != '') { ?>
+                    <span id="footer-wechat-icon" class="footer-social-icon"></span>
+                    <span>
+                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
+                    </span>
+                <?php } ?>
+
+            </div>
+            <div class="col-md-2">
+                <?php if( of_get_option('wechat',true) != '') { ?>
+                    <span id="footer-wechat-icon" class="footer-social-icon"></span>
+                    <span>
+                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
+                    </span>
+                <?php } ?>
+
+            </div>
             <div class="col-md-1"></div>
         </div>
     </div>
