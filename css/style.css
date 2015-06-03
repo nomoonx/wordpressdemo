@@ -52,6 +52,10 @@
     vertical-align: top;
 }
 
+.social-footer a:hover{
+    color: #fb4b3e;
+}
+
 .footer-social-icon{
     width: 50px;
     height: 50px;
@@ -65,6 +69,8 @@
     content: '\f1d7';
     color: #ffffff;
     margin-left:12px;
+    display: inline-block;
+    font-size: 24px;
 }
 /**********************************************************************************
 /* General *
