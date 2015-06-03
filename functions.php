@@ -71,6 +71,44 @@ function vision_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'vision_scripts_styles' );
 
+/***********************************************************************************************/
+/* Custom Comment Form */
+/***********************************************************************************************/
+function vision_custom_comment_form($defaults) {
+
+
+    $defaults['comment_notes_before'] = '';
+    $defaults['id_form'] = 'comment-form';
+    $defaults['comment_field'] = '<p><textarea name="comment" id="comment" class="form-control input-sm" rows="6"></textarea></p>';
+
+    return $defaults;
+}
+
+add_filter('comment_form_defaults', 'vision_custom_comment_form');
+
+function vision_custom_comment_fields() {
+    $commenter = wp_get_current_commenter();
+    $req = get_option('require_name_email');
+    $aria_req = ($req ? " aria-required='true'" : '');
+
+    $fields = array(
+        'author' => '<p>' .
+            '<input id="author" name="author" type="text" class="form-control input-sm" placeholder="Name ( required )" value="' . esc_attr($commenter['comment_author']) . '" ' . $aria_req . ' />' .
+
+            '</p>',
+        'email' => '<p>' .
+            '<input id="email" name="email" type="text" class="form-control input-sm" placeholder="Email ( required )" value="' . esc_attr($commenter['comment_author_email']) . '" ' . $aria_req . ' />'  .
+            '</p>',
+        'url' => '<p>' .
+            '<input id="url" name="url" type="text" class="form-control input-sm" placeholder="Website" value="' . esc_attr($commenter['comment_author_url']) . '" />'  .
+            '</p>'
+    );
+
+    return $fields;
+}
+
+add_filter('comment_form_default_fields', 'vision_custom_comment_fields');
+
 
 function vision_fonts_url() {
     $fonts_url = '';
