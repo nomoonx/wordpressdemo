@@ -71,16 +71,6 @@
 					</div> <!-- end posts-area -->
 
 				</div> <!-- end col-sm-9 -->
-	
-				<div class="col-sm-3">
-	
-					<div class="sidebar">
-						
-						<?php get_sidebar(); ?>
-			
-					</div> <!-- end sidebar -->
-
-				</div> <!-- end col-sm-3 -->
 
 			</div> <!-- end row -->
 
