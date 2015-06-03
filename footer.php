@@ -10,43 +10,49 @@
                                 微信公众号
                             </div>
                         </a>
-
+                <?php } ?>
+            </div>
+            <div class="col-md-2">
+                <?php if( of_get_option('youku',true) != '') { ?>
+                    <a href="<?php echo esc_url(of_get_option('youku','#')); ?>">
+                        <div id="footer-youku-icon" class="footer-social-icon"></div>
+                        <div class="footer-social-hypertext">
+                            优酷
+                        </div>
+                    </a>
                 <?php } ?>
 
             </div>
             <div class="col-md-2">
-                <?php if( of_get_option('wechat',true) != '') { ?>
-                    <span id="footer-wechat-icon" class="footer-social-icon"></span>
-                    <span>
-                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
-                    </span>
+                <?php if( of_get_option('weibo',true) != '') { ?>
+                    <a href="<?php echo esc_url(of_get_option('weibo','#')); ?>">
+                        <div id="footer-weibo-icon" class="footer-social-icon"></div>
+                        <div class="footer-social-hypertext">
+                            微博
+                        </div>
+                    </a>
                 <?php } ?>
 
             </div>
             <div class="col-md-2">
-                <?php if( of_get_option('wechat',true) != '') { ?>
-                    <span id="footer-wechat-icon" class="footer-social-icon"></span>
-                    <span>
-                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
-                    </span>
+                <?php if( of_get_option('insta',true) != '') { ?>
+                    <a href="<?php echo esc_url(of_get_option('insta','#')); ?>">
+                        <div id="footer-insta-icon" class="footer-social-icon"></div>
+                        <div class="footer-social-hypertext">
+                            Instagram
+                        </div>
+                    </a>
                 <?php } ?>
 
             </div>
             <div class="col-md-2">
-                <?php if( of_get_option('wechat',true) != '') { ?>
-                    <span id="footer-wechat-icon" class="footer-social-icon"></span>
-                    <span>
-                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
-                    </span>
-                <?php } ?>
-
-            </div>
-            <div class="col-md-2">
-                <?php if( of_get_option('wechat',true) != '') { ?>
-                    <span id="footer-wechat-icon" class="footer-social-icon"></span>
-                    <span>
-                        <a href="<?php echo esc_url(of_get_option('wechat','#')); ?>">微信公众号</a>
-                    </span>
+                <?php if( of_get_option('wechatstore',true) != '') { ?>
+                    <a href="<?php echo esc_url(of_get_option('wechatstore','#')); ?>">
+                        <div id="footer-wechatstore-icon" class="footer-social-icon"></div>
+                        <div class="footer-social-hypertext">
+                            微店
+                        </div>
+                    </a>
                 <?php } ?>
 
             </div>

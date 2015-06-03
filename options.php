@@ -705,6 +705,27 @@ function optionsframework_options() {
         'type' => 'text',
         'subtype' => 'url');
 
+    $options[] = array(
+        'desc' => __('微店 起始"http://"', 'skt-white'),
+        'id' => 'wechatstore',
+        'std' => '#wechatstore',
+        'type' => 'text',
+        'subtype' => 'url');
+
+    $options[] = array(
+        'desc' => __('YouKu Url with "http://"', 'skt-white'),
+        'id' => 'youku',
+        'std' => '#youku',
+        'type' => 'text',
+        'subtype' => 'url');
+
+    $options[] = array(
+        'desc' => __('微博 Url with "http://"', 'skt-white'),
+        'id' => 'weibo',
+        'std' => '#weibo',
+        'type' => 'text',
+        'subtype' => 'url');
+
 	$options[] = array(
 		'desc' => __('Facebook Url with "http://"', 'skt-white'),
 		'id' => 'facebook',
