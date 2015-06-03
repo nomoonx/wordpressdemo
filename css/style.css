@@ -53,11 +53,11 @@
 }
 
 
-.social-footer a:hover{
+.social-footer a:hover .footer-social-hypertext{
     color: #fb4b3e;
 }
 
-.footer-social-icon:hover{
+.social-footer a:hover .footer-social-icon{
     background-color: #fb4b3e;
 }
 
