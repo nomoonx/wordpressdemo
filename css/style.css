@@ -52,7 +52,13 @@
     vertical-align: top;
 }
 
+/*
 .social-footer a:hover{
+    color: #fb4b3e;
+}
+*/
+
+.footer-social-icon:hover{
     color: #fb4b3e;
 }
 
